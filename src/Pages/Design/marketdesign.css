@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+}
+
+.mark-container {
+    margin: 0;
+}
+
+.mark-title {
+    position: flex;
+    display: flex;
+    margin-left: 8%;
+    font-size: 2vw;
+    color: white;
+    text-shadow: -1px -1px 3px #12841D, 1px -1px 3px #12841D, -1px 1px 3px #12841D, 1px 1px 3px #12841D;
+    margin-bottom: 2vw;
+}
+
+.scrollable-market {
+    position: flex;
+    overflow-x: auto;
+    width: 92%;
+    height: 34vw;
+    top: 2vw;
+    margin-left: 7%;
+    background-color: #ccc;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scrollable-market thead{
+    font-size: 1.5vw;
+}  
+
+.scrollable-market table {
+    width: 100%;
+    height: 100%;
+    border-collapse:collapse;
+    position: flex;
+}
+
+.scrollable-market td{
+    padding: 3vw;
+}
+
+.scrollable-market td h3{
+    display: absolute;
+    margin-left: 3vw;
+    font-size: 1.5vw;
+    margin-top: 1vw
+}
+
+.scrollable-market th, td {
+    border: 2px solid #020202;
+}
+
+.scrollable-market th {
+    background-color: #13d82a;
+    border: 2px solid #ffffff;
+    color: white;
+    padding: 2.5vw;
+}
+
+.scrollable-market td h2{
+    display: absolute;
+    margin-top: -3vw;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134;
+    font-weight: 1000;
+    margin-left: 5vw;
+}
+
+.scrollable-market td h1{
+    display: absolute;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134;
+    font-weight: 1000;
+}
+
+.scrollable-market td h5{
+    display: absolute;
+    margin-top: -1.8vw;    
+    text-align: center;
+    font-weight: 1000;
+    margin-left: 18vw;
+    font-size: 1.3vw;
+}
+
+
+
+.scrollable-market .market-img {
+    margin-top: -3vw;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.50);
+}
+
+.price-cont{
+    text-align: center;
+    padding: 1vw;
+    border: 1px solid #13d82a;
+    background-color: white;
+    border-radius: 1.5vw;
+    width: 20vw;
+    margin-left: 10vw;
+    margin-top: -2vw;
+    font-size: 1.5vw;
+}
+
+.bttn-request{
+    position: absolute;
+    width: 15%;
+    border-radius: 1vw;
+    height: 4vw;
+    background-color: #24b134;
+    color: #fff;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 65%;
+    margin-top: -6.5vw;
+    font-size: 2vw;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.bttn-request:hover {
+    background-color: white;
+    color: #13d82a;
+    border: 2px solid #13d82a;
+}
+
+.bttn-request h4{
+    font-weight: 600;
+    position: absolute;
+    bottom: 0.2vw;
+    left: 1vw;
+}
+
+.bttn-request h5{
+    font-weight: 600;
+    position: absolute;
+    top: 0.2vw;
+    right: 1vw;
+}
+
+.total-market{
+    position: absolute;
+    margin-left: 84%;
+    margin-top: -8%;
+    height: 15%;
+    border: 0.2vw solid white;
+    width: 13%;
+    border-radius: 0.5vw;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: #13d82a;
+    padding: 0.4vw;
+}
+
+.total-market h2{
+    position: flex;
+    color: white;
+    text-align: center;
+}
+
+.total-market h1{
+    position: absolute;
+    color: white;
+    margin-left: 5.5vw;
+    font-size: 3vw;
+}
+
+.total-market svg{
+    position: absolute;
+    font-size: 3.5vw;
+    color: rgb(241, 241, 241);
+    margin-top: -0.2vw;
+    margin-left: 1vw;
+}
+
+.close {
+    position: absolute;
+    top: 0.1vw;
+    right: 1vw;
+    color: #13d82a;
+    font-size: 2vw;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.5em;
+}
+
+.scrollable-request {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    height: 42vw;
+    background-color: #ccc;
+    margin-top: 1.5vw;
+}
+
+.scrollable-market .popup{
+    border-radius: 2vw;
+    overflow: hidden;
+    border: 5px solid #26933F;
+}
+
+.scrollable-request thead{
+    font-size: 1vw;
+}
+
+.scrollable-request table{
+    width: 100%;
+    height: 100%;
+    border-collapse:collapse;
+    position: flex;
+}
+
+.scrollable-request td {
+    padding: 1vw;
+}
+
+.scrollable-request td h3{
+    display: absolute;
+    font-size: 1.5vw;
+    margin-top: 1vw
+}
+
+.scrollable-request td{
+    border: none;
+    border-bottom: 4px solid #020202;
+    background-color: white;
+}
+
+.scrollable-request th {
+    background-color: #c4c4c4;
+    color: rgb(0, 0, 0);
+    padding: 1vw;
+    border: none;
+}
+
+.scrollable-request td h2{
+    display: absolute;
+    margin-top: -3vw;
+    text-align: center;
+    color: black;
+    text-shadow: none;
+    font-weight: 1000;
+}
+
+.scrollable-request h2{
+    margin-left: 8vw;
+}
+
+.request-img{
+    margin-left: -8vw;
+    margin-top: -3vw;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.50);
+}
+
+.bttns {
+    flex-direction: column;
+}
+
+.bttn-accpt,
+.bttn-dec {
+    width: 100%;
+    height: 4vw;
+    margin-bottom: 0.5vw; 
+}
+
+.bttn-accpt{
+    border-radius: 0.5vw;
+    background-color: #24b134;
+    color: black;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1vw;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.bttn-accpt:hover{
+    background-color: white;
+    color: #13d82a;
+    border: 2px solid #13d82a;
+}
+
+.bttn-dec{
+    border-radius: 0.5vw;
+    background-color: #eb3636;
+    color: black;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1vw;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.bttn-dec:hover{
+    background-color: white;
+    color: #eb3636;
+    border: 2px solid #eb3636;
+}

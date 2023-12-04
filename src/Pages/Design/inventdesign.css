@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+.inventory-cont {
+    margin: 0;
+}
+
+.invent-title h1 {
+    position: flex;
+    margin-left: 8%;
+    font-size: 5vw;
+    color: white;
+    text-shadow: -1px -1px 3px #12841D, 1px -1px 3px #12841D, -1px 1px 3px #12841D, 1px 1px 3px #12841D;
+}
+
+.stock-title h1 {
+    position: flex;
+    margin-top: 2%;
+    margin-left: 7%;
+    font-size: 2.5vw;
+    color: white;
+    border: 2px solid #13d82a;
+    height: 7vw;
+    width: 92%;
+    padding: 1.5vw;
+    background-color: #26933F;
+
+
+}
+
+.total-invent {
+    position: absolute;
+    margin-left: 85%;
+    margin-top: -6%;
+    height: 15%;
+    border: 1% solid white;
+    width: 13%;
+    border-radius: 0.5vw;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: #26933F;
+    padding: 0.4vw;
+
+}
+
+.total-invent h2 {
+    position: flex;
+    color: white;
+    text-align: center;
+}
+
+.total-invent h1 {
+    position: absolute;
+    color: white;
+    margin-left: 6vw;
+    margin-top: 0.5vw;
+}
+
+.total-invent svg {
+    position: absolute;
+    font-size: 3.5vw;
+    color: rgb(241, 241, 241);
+    margin-top: -0.5vw;
+    margin-left: 1vw;
+}
+
+.scrollable-cont {
+    padding: 0.5vw;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    position: flex;
+    width: 92%;
+    height: 53%;
+    top: 45%;
+    margin-left: 7%;
+    background-color: #ccc;
+    border: 2px solid #13d82a;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ingredient {
+    align-items: center;
+    margin-bottom: 1vw;
+    display: flex;
+    position: flex;
+    padding: 1vw;
+    margin-right: 10px;
+    border: 2px solid #13d82a;
+    background-color: white;
+    border-radius: 2vw;
+}
+
+.ingred-sample {
+    position: flex;
+    /* Set to a valid position value */
+    margin-left: 2%;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    /* Use 50% to create a circle */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.50);
+}
+
+.ingredient h2 {
+    font-size: 2vw;
+    margin-left: 1.5vw;
+}
+
+.percent-bar {
+    margin-left: 6%;
+    height: 1.2vw;
+    /* Set the height of the percent bar */
+    width: 50%;
+    /* Make it fill the available width */
+    background-color: #ccc;
+    /* Background color of the bar */
+    border: 1px solid #999;
+    /* Border for the bar */
+    border-radius: 1.5vw;
+}
+
+/* Optionally, you can style the filled part of the bar */
+.percent-bar-fill {
+    height: 100%;
+    background-color: #13d82a;
+    /* Color of the filled part */
+    width: 50%;
+    border-radius: 1.5vw;
+}
+
+.remaining {
+    font-size: 1.5vw;
+    position: flex;
+    display: flex;
+    color: #13d82a;
+}
+
+.total {
+    font-size: 1.5vw;
+    margin-top: -1.5vw;
+    color: #13d82a;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    height: 95%;
+    width: 95%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.open-popup{
+    background-color: white;
+    border: none;
+    font-size: 3vw;
+    color: #a39f9f;
+    padding-left: 3.5vw;
+}
+
+.open-popup :hover{
+    background-color: white;
+    border: none;
+    font-size: 3vw;
+    color: #13d82a;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black background */
+    backdrop-filter: blur(5px);
+    /* Apply a blur effect */
+    z-index: 999;
+    /* Place the backdrop on top of everything */
+}

@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+.profile {
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bttnsave {
+  color: #13d82a;
+  position: flex;
+  background-color: #ffffff;
+  font: 12vw italic;
+  border: 2px solid #13d82a;
+  font-size: 1vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  margin: 1vw;
+  cursor: pointer;
+  display: absolute;
+  margin-top: 20vw;
+  margin-left: 10vw;
+  text-decoration: underline;
+  width: 12vw;
+}
+
+.bttnsave:hover {
+  background-color: #57B961;
+  color: white;
+}
+
+.bttnedit {
+  color: #13d82a;
+  position: flex;
+  background-color: #ffffff;
+  font: 12vw italic;
+  border: 2px solid #13d82a;
+  font-size: 1vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  margin: 1vw;
+  cursor: pointer;
+  display: absolute;
+  margin-top: 20vw;
+  margin-left: 9vw;
+  text-decoration: underline;
+  width: 14vw;
+  text-align: center;
+}
+
+.bttnedit2 {
+  text-align: center;
+  color: #f83535;
+  position: flex;
+  background-color: #ffffff;
+  font: 12vw italic;
+  border: 2px solid #f83535;
+  font-size: 1vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  display: flex;
+  margin-left: 10vw;
+  width: 12vw;
+  text-decoration: underline;
+}
+
+.bttnchapass {
+  justify-content: center;
+  color: #13d82a;
+  position: flex;
+  background-color: #ffffff;
+  font: 10vw italic;
+  border: 2px solid #13d82a;
+  font-size: 0.8vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  display: flex;
+  margin-left: 10vw;
+  width: 12vw;
+  text-decoration: underline;
+  margin-top: 1vw;
+}
+
+.bttnchapass:hover {
+  background-color: #13d82a;
+  color: white;
+}
+
+.Backs {
+  text-align: center;
+  position: absolute;
+  background-color: #57B961;
+  color: white;
+  border: 2px solid #023808;
+  font-size: 1vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  margin: 1vw;
+  cursor: pointer;
+  display: fixed;
+  margin-top: 36%;
+  margin-left: 42%;
+  text-decoration: underline;
+}
+
+.circle2 {
+  position: absolute;
+  width: 18vw;
+  height: 18vw;
+  top: 8vw;
+  left: 7vw;
+  border-radius: 50%;
+  background-color: #ccc;
+  z-index: -1;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bttnedit:hover {
+  background-color: #57B961;
+  color: white;
+}
+
+.bttnedit2:hover {
+  background-color: #f83535;
+  color: black;
+}
+
+
+.form-prof label {
+  font-size: 1vw;
+  padding: 1vw;
+  color: #646363;
+}
+
+.form-prof2 label {
+  font-size: 1vw;
+  padding: 1vw;
+  color: #646363;
+}
+
+
+.form-prof {
+  font-size: 1vw;
+  position: absolute;
+  width: 22vw;
+  top: 10vw;
+  left: 30vw;
+}
+
+.form-prof2 {
+  font-size: 1vw;
+  position: absolute;
+  width: 22vw;
+  top: 10vw;
+  left: 63vw;
+}
+
+.form-prof2 .description input {
+  height: 8vw;
+  border-radius: 1vw;
+}
+
+.form-prof ::placeholder {
+  color: black;
+  font-size: 1.2vw;
+}
+
+.form-prof2 ::placeholder {
+  color: black;
+  font-size: 1.2vw;
+}
+
+.form-prof input {
+  background-color: #e2e2e2;
+  color: black;
+  width: calc(150% - 2vw);
+  font-size: 1vw;
+  height: 3vw;
+  border-radius: 10vw;
+  border: 1px solid #b9b9b9;
+  padding: 1.5vw;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.form-prof2 input {
+  background-color: #e2e2e2;
+  color: black;
+  width: calc(150% - 2vw);
+  font-size: 1vw;
+  border-radius: 10vw;
+  height: 3vw;
+  border: 1px solid #b9b9b9;
+  padding: 1.5vw;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.profile-image{
+  position: absolute;
+  width: 18vw;
+  height: 18vw;
+  top: 6vw;
+  left: 7vw;
+  border-radius: 50%;
+  background-color: #ccc;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-select-image svg{
+  position: absolute;
+  margin-left: 19vw;
+  margin-top: 14vw;
+  border: none;
+  border-radius: 100%;
+  background: white;
+  font-size: 3vw;
+  color: #13d82a;
+}
+
+.btn-select-image svg:hover{
+  color: #048012;
+}
+
+.bttndeact {
+  text-align: center;
+  position: absolute;
+  background-color: #f83535;
+  color: white;
+  border: 2px solid black;
+  font-size: 1vw;
+  padding: 1vw 4vw;
+  border-radius: 1vw;
+  margin: 1vw;
+  cursor: pointer;
+  display: fixed;
+  margin-top: 36%;
+  margin-left: 56%;
+  text-decoration: underline;
+}

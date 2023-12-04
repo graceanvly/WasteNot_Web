@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+.menu-container {
+    margin: 0;
+}
+
+.menu-title {
+    position: flex;
+    display: flex;
+    margin-left: 8%;
+    font-size: 2vw;
+    color: white;
+    text-shadow: -1px -1px 3px #12841D, 1px -1px 3px #12841D, -1px 1px 3px #12841D, 1px 1px 3px #12841D;
+}
+
+.scrollable-menu {
+    margin-top: 1vw;
+    margin-left: 6%;
+}
+
+.menu-table{
+    position: flex;
+    margin-top: 2vw;
+    width: 95%;
+    height: 65%;
+    margin-left: 2.5vw;
+    border-collapse:collapse;
+    background-color: #D9D9D9;
+}
+
+.menu-table th {
+    background-color: #13d82a;
+    border: 2px solid #036a0f;
+    color: white;
+    padding: 1.5vw;
+}
+
+.menu-table td{
+    /* width: 100vw; */
+    padding: 1vw;
+}
+.dish_name{
+    height: 7vw;
+    display: flex;
+}
+
+.dish_name h2{
+    margin-top: 2vw;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134;
+    font-weight: 1000;
+    margin-left: 5vw; /* Adjust the margin to center the text */
+    flex: 1;
+    padding-right: 10vw;
+}
+
+.menu-table td .menu-img {
+    margin-bottom: -4vw;
+    margin-left: 3vw;
+    display: flex;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0.5, 0.5, 0.5);
+    object-fit: cover;
+}
+
+/* .menu-table h2{
+    margin-bottom: 2vw;
+    position:relative;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134;
+    font-weight: 1000;
+} */
+
+.menu-table td .dish-descrip {
+    overflow-x: auto;
+    padding-left: 2vw;
+}
+
+.total-menu {
+    position: flex;
+    margin-left: 85%;
+    margin-top: -5vw;
+    height: 20%;
+    border: 0.2vw solid white;
+    width: 10%;
+    border-radius: 0.5vw;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: #15be28;
+    padding: 1vw;
+    color: white;
+}
+
+.total-menu svg {
+    position: flex;
+    font-size: 2vw;
+    color: rgb(241, 241, 241);
+    top: 8vw;
+    margin-left: 1vw;
+}
+
+.total-menu h2 {
+    font-size: 110%;
+    position: flex;
+    color: white;
+    text-align: center;
+}
+
+.total-menu h1 {
+    position: flex;
+    color: white;
+    margin-left: 5.5vw;
+    font-size: 1.5vw;
+    margin-top: -2vw;
+}
+
+.menu-container .bttn-add {
+    display: flex;
+    position: absolute;
+    margin-left: 78%;
+    background-color: white;
+    border: none;
+    font-size: 2.8vw;
+    color: #15be28;
+    cursor: pointer;
+    top: 7.4vw;
+}
+
+.bttn-add:hover{
+    color: #069b17;
+    border: none;
+}
+
+.scrollable-decsrip{
+    position: flex;
+    overflow-x: auto;
+    width: auto;
+    height: 120%;
+    text-align: justify;
+    padding: 0.5vw;
+    font-size: 1vw;
+}

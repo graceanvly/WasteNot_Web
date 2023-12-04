@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.containers {
+    display: flex;
+    /* Add this to make the children flex items */
+    justify-content: space-between;
+    /* Add this to space elements evenly */
+    align-items: center;
+    /* Align items vertically in the container */
+    width: 50%;
+    height: 300px;
+    max-width: 100%;
+    position: relative;
+}
+
+.word {
+    font-size: 3vw;
+    position: absolute;
+    top: 20%;
+    left: 135%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    padding-top: 2vw;
+    color: #57B961;
+}
+
+.login {
+    position: absolute;
+    left: 53vw;
+    top: 9vw;
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+}
+
+.login label{
+    font-size: 1.5vw;
+    color: #57B961;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.login input {
+    margin-bottom: 1.5vw;
+    width: 30vw;
+    background-color: #dfe4e0;
+    color: #57B961;
+    border-radius: 1.5vw;
+    height: 4vw;
+    outline: none;
+    font-size: 1vw;
+    padding: 1vw;
+    border: 0.2vw solid #026b0c;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.containers .LogIn {
+    top: 16vw;
+    background-color: #57B961;
+    color: black;
+    border-color: black;
+    font-size: 1vw;
+    padding: 0.5vw;
+    border-radius: 1vw;
+    width: 15vw;
+    height: 3vw;
+    cursor: pointer;
+    position: absolute;
+    left: 6.7vw;
+    text-decoration: underline;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.containers .LogIn:hover{
+    background-color: white;
+    color: #57B961;
+    border: 2px solid;
+    border-color: #57B961;
+}
+
+.containers .Register {
+    position: absolute;
+    background-color: #57B961;
+    border-color: black;
+    font-size: 1vw;
+    border-radius: 1vw;
+    cursor: pointer;
+    position: absolute;
+    left: 6vw;
+    top: 20vw;
+    text-decoration: underline;
+    width: 15vw;
+    height: 3vw;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.containers .Register:hover{
+    background-color: white;
+    color: #57B961;
+    border: 2px solid;
+    border-color: #57B961;
+}
+
+.logo {
+    position:absolute;
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    top: 6vw;
+    left: 19vw;
+}
