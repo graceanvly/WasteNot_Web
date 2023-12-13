@@ -5,8 +5,8 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import {
   getFirestore,
   collection,
-    setDoc,
-  doc,    
+  setDoc,
+  doc,
 } from 'firebase/firestore';
 import './Design/registerdesign.css';
 import { useNavigate } from 'react-router-dom';
@@ -65,13 +65,13 @@ export const Register = (props) => {
       switch (name) {
         case "restaurantname":
           if (!value) {
-            stateObj[name] = "Please enter Restaurant Name.";
+            stateObj[name] = "*";
           }
           break;
 
         case "email":
           if (!value) {
-            stateObj[name] = "Please enter Email.";
+            stateObj[name] = "*";
           } else if (!isValidEmail(value)) {
             stateObj[name] = "Please enter a valid Email.";
           }
@@ -79,25 +79,27 @@ export const Register = (props) => {
 
         case "restoAdd":
           if (!value) {
-            stateObj[name] = "Please enter Restaurant Address.";
+            stateObj[name] = "*";
           }
           break;
 
         case "contactnum":
           if (!value) {
-            stateObj[name] = "Please enter Contact Number.";
+            stateObj[name] = "*";
+          } else if (!/^09\d{9}$/.test(value)) {
+            stateObj[name] = "*";
           }
           break;
 
         case "restoPermit":
           if (!value) {
-            stateObj[name] = "Please enter Restaurant Permit.";
+            stateObj[name] = "*";
           }
           break;
 
         case "password":
           if (!value) {
-            stateObj[name] = "Please enter Password.";
+            stateObj[name] = "*";
 
           } else if (input.confirmPassword && value !== input.confirmPassword) {
             stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
@@ -108,7 +110,7 @@ export const Register = (props) => {
 
         case "confirmPassword":
           if (!value) {
-            stateObj[name] = "Please enter Confirm Password.";
+            stateObj[name] = "Please Confirm your Password.";
           } else if (input.password && value !== input.password) {
             stateObj[name] = "Password and Confirm Password does not match.";
           }
@@ -116,12 +118,12 @@ export const Register = (props) => {
 
         case "restocity":
           if (!value) {
-            stateObj[name] = "Please enter Restaurant City.";
+            stateObj[name] = "*";
           }
           break;
         case "restocode":
           if (!value) {
-            stateObj[name] = "Please enter Zip Code.";
+            stateObj[name] = "*";
           }
           break;
 
@@ -166,7 +168,7 @@ export const Register = (props) => {
       console.log('before adding the firestore')
 
       // Add additional user data to Firestore
-       await setDoc(doc(usersCollectionRef, userCredential.user.uid), {
+      await setDoc(doc(usersCollectionRef, userCredential.user.uid), {
         restaurantName: input.restaurantname,
         restaurantEmail: input.email,
         restaurantAddress: input.restoAdd,
@@ -197,7 +199,7 @@ export const Register = (props) => {
 
         <div className="app1">
           <form onSubmit={registerUser}>
-            <label>Restaurant Name</label>
+            <label>Restaurant Name </label>{error.restaurantname && <span className='err'>{error.restaurantname}</span>}
             <br />
             <input
               type="text"
@@ -206,10 +208,10 @@ export const Register = (props) => {
               value={input.restaurantname}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.restaurantname && <span className='err'>{error.restaurantname}</span>}
+
             <br />
 
-            <label>Email</label>
+            <label>Email </label>{error.email && <span className='err'>{error.email}</span>}
             <br />
             <input
               type="email"
@@ -218,10 +220,9 @@ export const Register = (props) => {
               value={input.email}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.email && <span className='err'>{error.email}</span>}
             <br />
 
-            <label>Restaurant Street Address</label>
+            <label>Restaurant Street Address </label> {error.restoAdd && <span className='err'>{error.restoAdd}</span>}
             <br />
             <input
               type="text"
@@ -230,10 +231,9 @@ export const Register = (props) => {
               value={input.restoAdd}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.restoAdd && <span className='err'>{error.restoAdd}</span>}
             <br />
 
-            <label>Restaurant City</label>
+            <label>Restaurant City </label>{error.restocity && <span className='err'>{error.restocity}</span>}
             <br />
             <input
               type="text"
@@ -242,27 +242,27 @@ export const Register = (props) => {
               value={input.restocity}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.restocity && <span className='err'>{error.restocity}</span>}
             <br />
 
-            <label>Contact Number</label>
+            <label>Contact Number </label> {error.contactnum && <span className='err'>{error.contactnum}</span>}
             <br />
             <input
-              type="number"
+              type="tel"
               name="contactnum"
-              placeholder='Enter Contact Number'
+              placeholder='09xxxxxxxxx'
               value={input.contactnum}
               onChange={onInputChange}
-              onBlur={validateInput}></input><br />
-            {error.contactnum && <span className='err'>{error.contactnum}</span>}
-            <br />
-            <Link to="/login"><button className="Back">Back</button></Link>
+              onBlur={validateInput}
+              pattern="^09\d{9}$"
+              title="Please enter a valid Philippine contact number starting with 09"
+            ></input><br />
+            <Link to="/login"><button className="Back">Cancel</button></Link>
           </form>
         </div>
 
         <div className='app2'>
           <form onSubmit={registerUser}>
-            <label>Restaurant Permit Number</label>
+            <label>Restaurant Permit Number </label> {error.restoPermit && <span className='err'>{error.restoPermit}</span>}
             <br />
             <input
               type="text"
@@ -271,7 +271,6 @@ export const Register = (props) => {
               value={input.restoPermit}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.restoPermit && <span className='err'>{error.restoPermit}</span>}
             <br />
             <label>Select Restaurant Permit Image</label>
 
@@ -290,7 +289,7 @@ export const Register = (props) => {
             <br />
             <br />
 
-            <label>Zip Code</label>
+            <label>Zip Code </label> {error.restocode && <span className='err'>{error.restocode}</span>}
             <br />
             <input
               type="number"
@@ -299,10 +298,10 @@ export const Register = (props) => {
               value={input.restocode}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.restocode && <span className='err'>{error.restocode}</span>}
+
             <br />
 
-            <label>Password</label>
+            <label>Password </label> {error.password && <span className='err'>{error.password}</span>}
             <br />
             <input
               type="password"
@@ -311,7 +310,6 @@ export const Register = (props) => {
               value={input.password}
               onChange={onInputChange}
               onBlur={validateInput}></input><br />
-            {error.password && <span className='err'>{error.password}</span>}
             <br />
 
             <label>Confirm Password</label>

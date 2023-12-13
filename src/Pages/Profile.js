@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Design/profiledesign.css';
 // import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
@@ -6,10 +6,10 @@ import Navbar2 from '../components/NavBar2';
 import {
   FaPlusCircle
 } from 'react-icons/fa';
-import { signOut,onAuthStateChanged } from 'firebase/auth';
-import { auth,db } from '../config/firebase';
+import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
-import { getDoc, doc,setDoc } from 'firebase/firestore';
+import { getDoc, doc, setDoc } from 'firebase/firestore';
 
 
 export const Profile = (props) => {
@@ -48,7 +48,7 @@ export const Profile = (props) => {
       const user = auth.currentUser;
       if (user) {
         const userId = user.uid;
-  
+
         // Check 'admin_users' collection
         const adminUserDoc = await getDoc(doc(db, 'admin_users', userId));
         if (adminUserDoc.exists()) {
@@ -62,7 +62,7 @@ export const Profile = (props) => {
             restoPermit: adminUserData.restaurantPermit,
             restocity: adminUserData.restaurantCity,
             restocode: adminUserData.zipCode,
-            restodescrip: adminUserData.restautantDesc,
+            restodescrip: adminUserData.restaurantDesc,
           });
         } else {
           console.log('Admin user not found');
@@ -74,15 +74,15 @@ export const Profile = (props) => {
       console.error('Error fetching user data:', error);
     }
   };
-  
-  
-  
+
+
+
 
   useEffect(() => {
     // Fetch user data when the component mounts
     fetchUserData();
   }, []);
-  
+
   const handleClick = () => {
     signOut(auth).then(val => {
       console.log(val, "Log Out!");
@@ -90,27 +90,7 @@ export const Profile = (props) => {
     });
   }
 
-  // const initialFormData = {
-  //   restaurantname: '',
-  //   email: '',
-  //   restoAdd: '',
-  //   contactnum: '',
-  //   restoPermit: '',
-  //   password: '',
-  //   confirmPassword: '',
-  //   restocity: '',
-  //   restocode: '',
-  //   restodescrip: '',
-  //   selectedImage: null,
-  // };
-
-  //const [formData, setFormData] = useState(initialFormData);
   const [isEditable, setIsEditable] = useState(false);
-  // const [showChangePassword, setShowChangePassword] = useState(false);
-
-  // const toggleChangePassword = () => {
-  //   setShowChangePassword(!showChangePassword);
-  // };
 
 
   const handleCancel = () => {
@@ -123,9 +103,9 @@ export const Profile = (props) => {
       restoPermit: userData ? userData.restaurantPermit : '',
       restocity: userData ? userData.restaurantCity : '',
       restocode: userData ? userData.zipCode : '',
-      restodescrip: userData ? userData.restautantDesc :'', // Add other fields as needed
+      restodescrip: userData ? userData.restautantDesc : '', // Add other fields as needed
     });
-  
+
     // Exit edit mode
     setIsEditable(false);
   };
@@ -340,19 +320,21 @@ export const Profile = (props) => {
 
           <div className='form-prof2'>
 
-            {/* <label>Restaurant Permit Number</label>
+            <label>Contact number</label>
             <br />
-
             <input
-              type="number"
-              name="restoPermit"
-              value={formData.restoPermit}
+              type="tel"
+              name="contactnum"
+              value={formData.contactnum}
               onChange={handleInputChange}
-              placeholder="Sample Restaurant Permit"
-              disabled={true} // Use !isEditable to conditionally disable the input
+              pattern="^09\d{9}$"
+              title="Please enter a valid Philippine contact number starting with 09"
+              disabled={!isEditable}
             />
             <br />
-            <br /> */}
+            <br />
+
+
 
 
             <label>Restaurant Description</label>

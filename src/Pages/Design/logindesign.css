@@ -74,6 +74,7 @@ body {
     left: 6.7vw;
     text-decoration: underline;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+    font-weight: 900;
 }
 
 .containers .LogIn:hover{
@@ -91,12 +92,13 @@ body {
     border-radius: 1vw;
     cursor: pointer;
     position: absolute;
-    left: 6vw;
+    left: 6.7vw;
     top: 20vw;
     text-decoration: underline;
     width: 15vw;
     height: 3vw;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+    font-weight: 900;
 }
 
 .containers .Register:hover{

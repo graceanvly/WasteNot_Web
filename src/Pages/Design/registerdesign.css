@@ -11,7 +11,7 @@
 .header {
     position: absolute;
     top: 12%;
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
     font-size: 3vw;
     padding: 1vw;
@@ -23,7 +23,7 @@
     display: flex;
     color: #9bb39d;
     font-style: bold;
-    font-size: 1.5vw;
+    font-size: 1px;
     position: absolute;
     top: 25%;
     left: 20vw;
@@ -45,7 +45,7 @@
     display: flex;
     color: #9bb39d;
     font-style: bold;
-    font-size: 1.5vw;
+    font-size: 1px;
     position: absolute;
     top: 25%;
     left: 55vw;
@@ -71,7 +71,7 @@
 
 .Back {
     position: absolute;
-    background-color: #57B961;
+    background-color: #ED5E5E;
     border-color: black;
     font-size: 1vw;
     border-radius: 1vw;
@@ -81,17 +81,18 @@
     height: 3.5vw;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
     margin-left: 18vw;
+    font-weight: 900;
 }
 
 .Back:hover{
     background-color: white;
-    color: #57B961;
+    color: #ED5E5E;
     border: 2px solid;
-    border-color: #57B961;
+    border-color: #ED5E5E;
 }
 
 
-.Register {
+.register-container .Register {
     margin-left: 2%;
     position: absolute;
     background-color: #57B961;
@@ -104,6 +105,7 @@
     width: 12vw;
     height: 3.5vw;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+    font-weight: 900;
 }
 
 .Register:hover{
@@ -119,9 +121,6 @@
     left: 42vw;
 }
 
-.form-group label {
-    font-size: 1vw;
-}
 
 .file-upload-button {
     color: white;

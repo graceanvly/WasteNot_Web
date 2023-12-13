@@ -20,33 +20,37 @@ import { db } from '../config/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export const Homepage = (props) => {
-    const [menuItems, setMenuItems] = useState([]);
+    const [menuItems, setMenuData] = useState([]);
     const [staffData, setStaffData] = useState([]);
     const [adminId, setAdminId] = useState('');
 
 
 
     useEffect(() => {
-        const fetchMenuItems = async () => {
+        const fetchMenuData = async () => {
             try {
                 const menuCollection = collection(db, 'menu_dish');
                 const menuSnapshot = await getDocs(menuCollection);
+                const menuList = [];
 
-                const items = [];
                 menuSnapshot.forEach((doc) => {
-                    // Assuming each document has 'name', 'price', and 'image' fields
-                    const { dishName, image } = doc.data();
-                    items.push({ dishName, image });
+                    const menuData = doc.data();
+
+                    // Check if the menu item belongs to the logged-in user
+                    if (adminId && menuData.userId === adminId) {
+                        menuList.push({ id: doc.id, ...menuData });
+                    }
                 });
 
-                setMenuItems(items);
+                setMenuData(menuList);
             } catch (error) {
-                console.error('Error fetching menu items:', error);
+                console.error('Error fetching menu data: ', error);
             }
         };
 
-        fetchMenuItems();
-    }, []);
+        fetchMenuData();
+    }, [adminId]);
+
     useEffect(() => {
         const auth = getAuth();
 
@@ -101,7 +105,7 @@ export const Homepage = (props) => {
                         <div className="title"><h4>Total Staff</h4></div>
                         <br />
                         <FaUsers />
-                        18
+                        {staffData.length}
                     </button>
                     </Link>
                     <Link to="/menu"><button class="icon-button2">
@@ -157,7 +161,7 @@ export const Homepage = (props) => {
                 <div className="menu-cont">
                     {menuItems.slice(0, 5).map((item, index) => (
                         <div key={index} className="item">
-                            <img className="sample" src={item.image} alt={`item${index + 1}`} />
+                            <img className="sample" src={menuItems} alt={`menuItems${index + 1}`} />
                             <h3>{item.dishName}</h3>
                             {/* <h4>₱{item.price}</h4> */}
                         </div>
