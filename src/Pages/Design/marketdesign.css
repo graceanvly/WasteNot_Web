@@ -224,7 +224,7 @@
 .scrollable-request td h3{
     display: absolute;
     font-size: 1.5vw;
-    margin-top: 1vw
+    margin-top: 1vw;
 }
 
 .scrollable-request td{
@@ -266,8 +266,8 @@
     flex-direction: column;
 }
 
-.bttn-accpt,
-.bttn-dec {
+.scrollable-request .bttn-accpt,
+.scrollable-request .bttn-dec {
     width: 100%;
     height: 4vw;
     margin-bottom: 0.5vw; 
@@ -287,13 +287,13 @@
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
 }
 
-.bttn-accpt:hover{
+.scrollable-request .bttn-accpt:hover{
     background-color: white;
     color: #13d82a;
     border: 2px solid #13d82a;
 }
 
-.bttn-dec{
+.scrollable-request .bttn-dec{
     border-radius: 0.5vw;
     background-color: #eb3636;
     color: black;
@@ -307,7 +307,7 @@
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
 }
 
-.bttn-dec:hover{
+.scrollable-request .bttn-dec:hover{
     background-color: white;
     color: #eb3636;
     border: 2px solid #eb3636;

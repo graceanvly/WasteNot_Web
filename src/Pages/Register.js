@@ -186,10 +186,13 @@ export const Register = (props) => {
       history('/profile');
 
     } catch (error) {
-      console.error('Error registering user:', error.code, error.message);
+      if (error.code === 'auth/email-already-in-use') {
+        window.alert('Email is already used.');
+      } else {
+        console.error('Error registering user:', error.code, error.message);
+      }
     }
   };
-
 
   return (
     <>

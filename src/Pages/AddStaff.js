@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'fir
 import { db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import './Design/addstaffdesign.css';
+import Sidebar from '../components/Sidebar';
 
 export const AddStaff = () => {
     const history = useNavigate();
@@ -120,6 +121,7 @@ export const AddStaff = () => {
     const handleSubmit = async () => {
         try {
             if (!validateForm()) {
+                window.alert('Please fill in all the required fields.');
                 return;
             }
             
@@ -165,6 +167,7 @@ export const AddStaff = () => {
     return (
         <>
             <Navbar2 />
+            <Sidebar />
             <div className="addstaff-container">
                 <div className='scrollable-addstaff'>
                     <div className='thead'>Information</div>

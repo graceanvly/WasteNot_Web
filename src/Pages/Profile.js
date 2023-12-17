@@ -10,6 +10,8 @@ import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { getDoc, doc, setDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 
 export const Profile = (props) => {
@@ -26,6 +28,7 @@ export const Profile = (props) => {
     restocity: '',
     restocode: '',
     restodescrip: '',
+    profileImage:'',
   });
 
 
@@ -63,6 +66,7 @@ export const Profile = (props) => {
             restocity: adminUserData.restaurantCity,
             restocode: adminUserData.zipCode,
             restodescrip: adminUserData.restaurantDesc,
+            profileImage: adminUserData.restaurantLogo,
           });
         } else {
           console.log('Admin user not found');
@@ -104,6 +108,7 @@ export const Profile = (props) => {
       restocity: userData ? userData.restaurantCity : '',
       restocode: userData ? userData.zipCode : '',
       restodescrip: userData ? userData.restautantDesc : '', // Add other fields as needed
+      profileImage: formData.selectedImage || userData.restaurantLogo,
     });
 
     // Exit edit mode
@@ -145,7 +150,8 @@ export const Profile = (props) => {
           restaurantPermit: formData.restoPermit,
           restaurantCity: formData.restocity,
           zipCode: formData.restocode,
-          restautantDesc: formData.restodescrip
+          restautantDesc: formData.restodescrip,
+          restaurantLogo: formData.selectedImage,
         };
 
         // Update the document in the 'admin_users' collection
@@ -164,15 +170,31 @@ export const Profile = (props) => {
     }
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-
-    // Update formData with the selected image
-    setFormData({
-      ...formData,
-      selectedImage: URL.createObjectURL(file), // Assuming you want to display the image
-    });
+  
+    // Generate a unique name for the file
+    const fileName = `Admin_Profile/${auth.currentUser.uid}_${file.name}`;
+  
+    // Get a reference to the storage location
+    const storage = getStorage();
+    const storageRef = ref(storage, fileName);
+  
+    // Upload the file to Firebase Storage
+    try {
+      await uploadBytes(storageRef, file);
+  
+      // Update formData with the selected image URL
+      const downloadURL = await getDownloadURL(storageRef);
+      setFormData({
+        ...formData,
+        selectedImage: downloadURL,
+      });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
+  
 
   const handleSelectImageClick = () => {
     // Trigger the file input when the "Select Image" button is clicked
@@ -228,7 +250,7 @@ export const Profile = (props) => {
       <div className='profile'>
         <form>
           <img
-            src={formData.selectedImage}
+            src={formData.profileImage}
             alt=""
             className="profile-image"
             onClick={isEditable ? handleSelectImageClick : undefined}

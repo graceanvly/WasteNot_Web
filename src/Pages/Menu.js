@@ -45,7 +45,7 @@ export const Menu = (props) => {
             <div className="menu-container">
                 <div className='menu-title'><h1>Menu</h1></div>
                 <div className='total-menu'>
-                    <h2>Total Ingredient</h2>
+                    <h2>Total Dishes</h2>
                     <FaWarehouse />
                     <br />
                     <h1>{menuData.length}</h1>

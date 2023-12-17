@@ -198,3 +198,82 @@
     z-index: 999;
     /* Place the backdrop on top of everything */
 }
+
+.scrollable-approval{
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    height: 42vw;
+    background-color: #ccc;
+    margin-top: 1.5vw;
+}
+
+.scrollable-approval thead{
+    font-size: 1vw;
+}
+
+.scrollable-approval table{
+    width: 100%;
+    height: 100%;
+    border-collapse:collapse;
+    position: flex;
+    text-align: center;
+}
+
+.scrollable-approval td{
+    padding: 1vw;
+}
+
+.scrollable-approval td h3{
+    display: absolute;
+    font-size: 1.5vw;
+    margin-top: 1vw
+}
+
+.scrollable-approval td{
+    border: none;
+    border-bottom: 4px solid #020202;
+    background-color: white;
+}
+
+.scrollable-approval th{
+    background-color: #c4c4c4;
+    color: rgb(0, 0, 0);
+    padding: 1vw;
+    border: none;
+}
+
+.scrollable-approval .bttn-accpt{
+    border-radius: 0.5vw;
+    background-color: #24b134;
+    color: black;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1vw;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 4vw;
+    margin-bottom: 0.5vw; 
+}
+
+.scrollable-approval .bttn-accpt:hover{
+    background-color: white;
+    color: #13d82a;
+    border: 2px solid #13d82a;
+}
+
+.close {
+    position: absolute;
+    top: 0.1vw;
+    right: 1vw;
+    color: #13d82a;
+    font-size: 2vw;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.5em;
+}

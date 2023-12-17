@@ -112,7 +112,7 @@ export const Homepage = (props) => {
                         <div className="title2"><h4>Total Dishes</h4></div>
                         <br />
                         <FaBookOpen />
-                        25
+                        {menuItems.length}
                     </button>
                     </Link>
                     <Link to="/inventory"><button class="icon-button3">

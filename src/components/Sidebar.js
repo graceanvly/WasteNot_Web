@@ -52,12 +52,12 @@ const Sidebar = ({ children }) => {
 
     return (
         <div className='container'>
-            <div style={{ width: isOpen ? "30vw" : "5vw" }} className='sidebar'>
+            <div style={{ width: isOpen ? "15vw" : "5vw" }} className='sidebar'>
                 <div className='top_section'>
                     {/* <h1 style={{ display: isOpen ? "block" : "none" }} className='Logos'>Logo</h1> */}
-                    <div href="/" className="Logos"><img src={image} width={150} height={100} style={{ display: isOpen ? "block" : "none" }} alt="SideBar logo"/></div>
+                    <div href="/" className="Logos"><img src={image} width={80} height={80} style={{ display: isOpen ? "block" : "none" }} alt="SideBar logo"/></div>
                     {/* <div  style={{ display: isOpen ? "block" : "none" }} className='Logos'>Logo</h1> */}
-                    <div style={{ marginLeft: isOpen ? "15vw" : "0.5vw" }} className='bars'>
+                    <div style={{ marginLeft: isOpen ? "3.5vw" : "0.5vw" }} className='bars'>
                         <FaBars onClick={toggle} />
                     </div>
                 </div>
