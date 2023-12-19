@@ -33,11 +33,11 @@ export const AddDish = (props) => {
         return () => unsubscribe();
     }, [auth]);
 
-    const handleImageUpload = (event) => {
+     const handleImageUpload = (event) => {
         const file = event.target.files[0];
 
         if (file) {
-            setSelectedImage(URL.createObjectURL(file));
+            setSelectedImage(file);
         }
     };
 
@@ -48,30 +48,33 @@ export const AddDish = (props) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         // Check if required fields are empty
         if (!dishName.trim() || !dishDescription.trim()) {
             alert('Please fill up the form');
             return;
         }
-
+    
         const auth = getAuth();
         const user = auth.currentUser;
-
+    
         try {
             let imageUrl = null;
-
+    
             if (selectedImage) {
-                const storageRef = ref(imageDB, `images/${Date.now()}_${dishName}`);
-                const uploadTask = uploadBytes(storageRef, selectedImage);
-
-                const snapshot = await getDownloadURL(uploadTask.ref);
-                imageUrl = snapshot;
+                // Create a reference to the storage location
+                const storageRef = ref(imageDB, `menu/${Date.now()}_${dishName}`);
+                
+                // Upload the image to storage
+                await uploadBytes(storageRef, selectedImage);
+    
+                // Get the download URL of the uploaded image
+                imageUrl = await getDownloadURL(storageRef);
             }
-
+    
             const dishesQuery = query(collection(db, 'menu_dish'), where('dishName', '==', dishName), where('userId', '==', user.uid));
             const dishesSnapshot = await getDocs(dishesQuery);
-
+    
             if (dishesSnapshot.empty) {
                 const docRef = await addDoc(collection(db, 'menu_dish'), {
                     dishName,
@@ -79,7 +82,7 @@ export const AddDish = (props) => {
                     imageUrl,
                     userId: user.uid,
                 });
-
+    
                 window.alert('Dish Added Successfully');
                 console.log('Document written with ID: ', docRef.id);
     
@@ -92,7 +95,7 @@ export const AddDish = (props) => {
             console.error('Error adding document: ', error);
         }
     };
-
+    
     return (
         <>
             <Navbar2 />

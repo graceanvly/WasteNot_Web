@@ -60,12 +60,28 @@ export const Menu = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {menuData.map((menuItem) => (
-                                <tr key={menuItem.id}>
-                                    <td><div className="dish_name"><img className='menu-img' src={menuItem.imageUrl} alt="ingredient" /><h2>{menuItem.dishName}</h2></div></td>
-                                    <td><div className="scrollable-decsrip"><p>{menuItem.dishDescription}</p></div></td>
-                                </tr>
-                            ))}
+                            {menuData.map((menuItem) => {
+                                console.log('menuItem.imageUrl:', menuItem.imageUrl);
+                                return (
+                                    <tr key={menuItem.id}>
+                                        <td>
+                                            <div className="dish_name">
+                                                {menuItem.imageUrl && (
+                                                    <img className='menu-img' src={menuItem.imageUrl} alt="dish" />
+                                                )}
+                                                <h2>{menuItem.dishName}</h2>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="scrollable-decsrip">
+                                                <p>{menuItem.dishDescription}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+
+
                         </tbody>
                     </table>
                 </div>
