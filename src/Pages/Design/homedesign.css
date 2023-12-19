@@ -9,7 +9,6 @@
 
 .icon-button {
     display: absolute;
-    /* or any other valid value for display */
     padding: 1.5vw 1vw;
     width: 10%;
     border-radius: 2vw;
@@ -22,9 +21,7 @@
     transition: background-color 0.3s;
     margin-left: 8vw;
     font-weight: 600;
-    /* Remove 'px' after the value */
     box-shadow: -1em 1rem 1rem rgba(0, 0, 0, 0.4);
-    /* Added box-shadow */
 }
 
 
@@ -33,7 +30,6 @@
 .icon-button4,
 .icon-button5 {
     display: absolute;
-    /* or any other valid value for display */
     padding: 1.5vw 1vw;
     width: 10vw;
     border-radius: 2vw;
@@ -58,6 +54,10 @@
 .icon-button5 svg {
     margin-right: 5px;
     font-size: 3vw;
+}
+
+.icon-button3 svg {
+    margin-top: -1vw;
 }
 
 .icon-button:hover,

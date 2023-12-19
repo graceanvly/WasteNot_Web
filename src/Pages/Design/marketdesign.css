@@ -28,7 +28,7 @@
 }
 
 .scrollable-market thead{
-    font-size: 1.5vw;
+    font-size: 1.3vw;
 }  
 
 .scrollable-market table {
@@ -39,25 +39,34 @@
 }
 
 .scrollable-market td{
-    padding: 3vw;
+    padding: 2vw;
 }
 
 .scrollable-market td h3{
     display: absolute;
     margin-left: 3vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin-top: 1vw
 }
+
+.scrollable-market .price{
+    width: 45%;
+}
+
+.scrollable-market .name{
+    width: 35%;
+}
+
 
 .scrollable-market th, td {
     border: 2px solid #020202;
 }
 
 .scrollable-market th {
-    background-color: #13d82a;
+    background-color: #03c04a;
     border: 2px solid #ffffff;
     color: white;
-    padding: 2.5vw;
+    padding: 1.5vw;
 }
 
 .scrollable-market td h2{
@@ -76,23 +85,23 @@
     color: #ffffff;
     text-shadow: 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134, 1px 1px 3px #24b134;
     font-weight: 1000;
+    font-size: 1.5vw;
 }
 
 .scrollable-market td h5{
     display: absolute;
-    margin-top: -1.8vw;    
-    text-align: center;
+    margin-top: -1.8vw;
     font-weight: 1000;
-    margin-left: 18vw;
-    font-size: 1.3vw;
+    margin-left: 65%;
+    font-size: 1.1vw;
 }
 
 
 
 .scrollable-market .market-img {
     margin-top: -3vw;
-    width: 6vw;
-    height: 6vw;
+    width: 4.5vw;
+    height: 4.5vw;
     border-radius: 50%;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.50);
 }
@@ -103,23 +112,23 @@
     border: 1px solid #13d82a;
     background-color: white;
     border-radius: 1.5vw;
-    width: 20vw;
-    margin-left: 10vw;
-    margin-top: -2vw;
+    width: 17vw;
+    margin-left: 6vw;
+    margin-top: -2.5vw;
     font-size: 1.5vw;
 }
 
 .bttn-request{
     position: absolute;
-    width: 15%;
+    width: 13%;
     border-radius: 1vw;
-    height: 4vw;
+    height: 3.5vw;
     background-color: #24b134;
     color: #fff;
     border: 2px solid #ffffff;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 65%;
+    margin-left: 67%;
     margin-top: -6.5vw;
     font-size: 2vw;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
@@ -136,6 +145,7 @@
     position: absolute;
     bottom: 0.2vw;
     left: 1vw;
+    font-size: 1.5vw;
 }
 
 .bttn-request h5{
@@ -143,22 +153,24 @@
     position: absolute;
     top: 0.2vw;
     right: 1vw;
+    font-size: 1.6vw;
 }
 
 .total-market{
     position: absolute;
     margin-left: 84%;
     margin-top: -8%;
-    height: 15%;
+    height: 13%;
     border: 0.2vw solid white;
-    width: 13%;
+    width: 10%;
     border-radius: 0.5vw;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    background-color: #13d82a;
+    background-color: #03c04a;
     padding: 0.4vw;
 }
 
 .total-market h2{
+    font-size: 1.2vw;
     position: flex;
     color: white;
     text-align: center;
@@ -167,13 +179,14 @@
 .total-market h1{
     position: absolute;
     color: white;
-    margin-left: 5.5vw;
-    font-size: 3vw;
+    margin-left: 4.5vw;
+    margin-top: -0.5vw;
+    font-size: 2vw;
 }
 
 .total-market svg{
     position: absolute;
-    font-size: 3.5vw;
+    font-size: 2vw;
     color: rgb(241, 241, 241);
     margin-top: -0.2vw;
     margin-left: 1vw;
@@ -193,11 +206,25 @@
 
 .scrollable-request {
     display: flex;
-    overflow-x: auto;
     width: 100%;
-    height: 42vw;
+    height: 100vw;
     background-color: #ccc;
     margin-top: 1.5vw;
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    height: 95%;
+    width: 95%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 1vw;
+    z-index: 1000;
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds the window height */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .scrollable-market .popup{
@@ -311,4 +338,15 @@
     background-color: white;
     color: #eb3636;
     border: 2px solid #eb3636;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
 }

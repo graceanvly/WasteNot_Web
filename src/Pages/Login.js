@@ -1,4 +1,4 @@
-import logo from '../images/dota2.png';
+import logo from '../images/logo.png';
 import './Design/logindesign.css';
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';

@@ -31,7 +31,7 @@
 }
 
 .menu-table th {
-    background-color: #13d82a;
+    background-color: #03c04a;
     border: 2px solid #036a0f;
     color: white;
     padding: 1.5vw;
@@ -91,7 +91,7 @@
     width: 10%;
     border-radius: 0.5vw;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    background-color: #15be28;
+    background-color: #03c04a;
     padding: 1vw;
     color: white;
 }

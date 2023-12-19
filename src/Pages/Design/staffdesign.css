@@ -28,7 +28,7 @@
     width: 10%;
     border-radius: 0.5vw;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    background-color: #15be28;
+    background-color: #03c04a;
     padding: 0.4vw;
     color: white;
 }
@@ -89,7 +89,7 @@
 
 .staff-scrollable th {
     text-align: left;
-    background-color: #13d82a;
+    background-color: #03c04a;
     color: white;
     padding: 1vw;
 }
@@ -135,7 +135,7 @@
 .search-bar button {
     padding: 0.5vw;
     margin-left: 0.5rem;
-    background-color: #13d82a;
+    background-color: #03c04a;
     color: white;
     border: none;
     border-radius: 4px;

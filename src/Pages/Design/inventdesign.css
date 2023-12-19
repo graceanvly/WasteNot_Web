@@ -9,7 +9,7 @@
 .invent-title h1 {
     position: flex;
     margin-left: 8%;
-    font-size: 5vw;
+    font-size: 3.5vw;
     color: white;
     text-shadow: -1px -1px 3px #12841D, 1px -1px 3px #12841D, -1px 1px 3px #12841D, 1px 1px 3px #12841D;
 }
@@ -18,13 +18,12 @@
     position: flex;
     margin-top: 2%;
     margin-left: 7%;
-    font-size: 2.5vw;
+    font-size: 2vw;
     color: white;
-    border: 2px solid #13d82a;
-    height: 7vw;
+    border: 2px solid #049215;
     width: 92%;
-    padding: 1.5vw;
-    background-color: #26933F;
+    padding: 1vw;
+    background-color: #03c04a;
 
 
 }
@@ -32,13 +31,13 @@
 .total-invent {
     position: absolute;
     margin-left: 85%;
-    margin-top: -6%;
-    height: 15%;
-    border: 1% solid white;
-    width: 13%;
+    margin-top: -5.5%;
+    height: 13%;
+    border: 2px solid white;
+    width: 10%;
     border-radius: 0.5vw;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    background-color: #26933F;
+    background-color: #03c04a;
     padding: 0.4vw;
 
 }
@@ -46,21 +45,21 @@
 .total-invent h2 {
     position: flex;
     color: white;
+    font-size: 1.1vw;
     text-align: center;
 }
 
 .total-invent h1 {
+    font-size: 2vw;
     position: absolute;
     color: white;
     margin-left: 6vw;
-    margin-top: 0.5vw;
 }
 
 .total-invent svg {
     position: absolute;
-    font-size: 3.5vw;
+    font-size: 2.5vw;
     color: rgb(241, 241, 241);
-    margin-top: -0.5vw;
     margin-left: 1vw;
 }
 
@@ -93,12 +92,10 @@
 
 .ingred-sample {
     position: flex;
-    /* Set to a valid position value */
     margin-left: 2%;
-    width: 10vw;
-    height: 10vw;
+    width: 6vw;
+    height: 6vw;
     border-radius: 50%;
-    /* Use 50% to create a circle */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.50);
 }
 
@@ -108,23 +105,18 @@
 }
 
 .percent-bar {
-    margin-left: 6%;
+    position: absolute;
+    margin-left: 25%;
     height: 1.2vw;
-    /* Set the height of the percent bar */
     width: 50%;
-    /* Make it fill the available width */
     background-color: #ccc;
-    /* Background color of the bar */
     border: 1px solid #999;
-    /* Border for the bar */
     border-radius: 1.5vw;
 }
 
-/* Optionally, you can style the filled part of the bar */
 .percent-bar-fill {
     height: 100%;
     background-color: #13d82a;
-    /* Color of the filled part */
     width: 50%;
     border-radius: 1.5vw;
 }
@@ -144,8 +136,7 @@
     justify-content: flex-end;
 }
 
-.popup {
-    display: none;
+.popup-inventory {
     position: fixed;
     height: 95%;
     width: 95%;
@@ -153,9 +144,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    border: 2px solid #ccc;
-    padding: 20px;
+    padding: 1vw;
     z-index: 1000;
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds the window height */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .popup-content {
@@ -163,11 +155,12 @@
 }
 
 .open-popup{
+    position: absolute;
     background-color: white;
     border: none;
     font-size: 3vw;
     color: #a39f9f;
-    padding-left: 3.5vw;
+    margin-left: 80%;
 }
 
 .open-popup :hover{
@@ -179,10 +172,15 @@
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: 1vw;
+    right: 1vw;
+    color: #13d82a;
+    font-size: 2vw;
     cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.5em;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .backdrop {
@@ -192,11 +190,8 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent black background */
     backdrop-filter: blur(5px);
-    /* Apply a blur effect */
     z-index: 999;
-    /* Place the backdrop on top of everything */
 }
 
 .scrollable-approval{
@@ -204,8 +199,10 @@
     overflow-x: auto;
     width: 100%;
     height: 42vw;
+    border: 2px bold #020202;
     background-color: #ccc;
     margin-top: 1.5vw;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .scrollable-approval thead{
@@ -214,20 +211,20 @@
 
 .scrollable-approval table{
     width: 100%;
-    height: 100%;
+    height: 20vw;
     border-collapse:collapse;
     position: flex;
-    text-align: center;
+    text-align: center; 
 }
 
 .scrollable-approval td{
     padding: 1vw;
+    height: 1vw;
 }
 
 .scrollable-approval td h3{
     display: absolute;
     font-size: 1.5vw;
-    margin-top: 1vw
 }
 
 .scrollable-approval td{
@@ -243,7 +240,7 @@
     border: none;
 }
 
-.scrollable-approval .bttn-accpt{
+.scrollable-approval .bttn-addtomarket{
     border-radius: 0.5vw;
     background-color: #24b134;
     color: black;
@@ -255,12 +252,12 @@
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
     box-shadow: -0.5em 1rem 1rem rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 4vw;
+    width: 60%;
+    height: 2.5vw;
     margin-bottom: 0.5vw; 
 }
 
-.scrollable-approval .bttn-accpt:hover{
+.scrollable-approval .bttn-addtomarket:hover{
     background-color: white;
     color: #13d82a;
     border: 2px solid #13d82a;

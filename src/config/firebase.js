@@ -21,6 +21,5 @@ const auth = getAuth(app);
 const imageDB = getStorage(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-
 export { app, auth, db, imageDB, storage };
 // const analytics = getAnalytics(app);

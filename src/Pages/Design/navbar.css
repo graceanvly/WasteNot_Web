@@ -49,24 +49,6 @@ nav a{
     margin-right: 1vw;
     margin-left: -4vw;
 }
-.faq{
-    width: 7vw;
-    height: 2vw;
-    background-color: #ffff;
-    color: #57B961;
-    border-color: #359e3f;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    margin: 0.5vw;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.faq:hover{
-    background-color: #57B961;
-    color: white;
-    border-color: white;
-}
 
 .aboutus{
     width: 7vw;

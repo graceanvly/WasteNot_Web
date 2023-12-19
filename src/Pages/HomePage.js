@@ -14,7 +14,6 @@ import image from "../images/steak_sample.png";
 import ingredient from "../images/ingredient_sample.png";
 import staff from "../images/Staff_sample.png";
 import market from "../images/potato.jpg";
-// import BarGraph from './BarGraph';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -23,8 +22,10 @@ export const Homepage = (props) => {
     const [menuItems, setMenuData] = useState([]);
     const [staffData, setStaffData] = useState([]);
     const [adminId, setAdminId] = useState('');
+    const [inventoryData, setInventoryData] = useState([]);
 
-
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     useEffect(() => {
         const fetchMenuData = async () => {
@@ -50,6 +51,31 @@ export const Homepage = (props) => {
 
         fetchMenuData();
     }, [adminId]);
+
+    useEffect(() => {
+        const fetchInventoryData = async () => {
+            try {
+                const inventoryCollection = collection(db, 'inventory');
+                const inventorySnapshot = await getDocs(inventoryCollection);
+                const inventoryList = [];
+
+                inventorySnapshot.forEach((doc) => {
+                    const inventoryData = doc.data();
+
+                    // Check if Restaurant_id matches user.uid
+                    if (inventoryData.Restaurant_id === user?.uid) {
+                        inventoryList.push({ id: doc.id, ...doc.data() });
+                    }
+                });
+
+                setInventoryData(inventoryList);
+            } catch (error) {
+                console.error('Error fetching inventory data: ', error);
+            }
+        };
+
+        fetchInventoryData();
+    }, [user]);
 
     useEffect(() => {
         const auth = getAuth();
@@ -119,7 +145,15 @@ export const Homepage = (props) => {
                         <div className="title3"><h4>Total Ingredients</h4></div>
                         <br />
                         <FaWarehouse />
-                        18
+                        {inventoryData.length}
+                    </button>
+                    </Link>
+
+                    <Link to="/market"><button class="icon-button3">
+                        <div className="title-market"><h4>Market</h4></div>
+                        <br />
+                        <FaWarehouse />
+                        <p>200</p>
                     </button>
                     </Link>
 
