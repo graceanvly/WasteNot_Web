@@ -107,7 +107,7 @@ export const Profile = (props) => {
       restoPermit: userData ? userData.restaurantPermit : '',
       restocity: userData ? userData.restaurantCity : '',
       restocode: userData ? userData.zipCode : '',
-      restodescrip: userData ? userData.restautantDesc : '', // Add other fields as needed
+      restodescrip: userData ? userData.restaurantDesc : '', // Add other fields as needed
       profileImage: formData.selectedImage || userData.restaurantLogo,
     });
 
@@ -140,7 +140,7 @@ export const Profile = (props) => {
       if (user) {
         const userId = user.uid;
         const userDocRef = doc(db, 'admin_users', userId);
-
+  
         // Create an object with the updated profile information
         const updatedData = {
           restaurantName: formData.restaurantname,
@@ -150,18 +150,24 @@ export const Profile = (props) => {
           restaurantPermit: formData.restoPermit,
           restaurantCity: formData.restocity,
           zipCode: formData.restocode,
-          restautantDesc: formData.restodescrip,
-          restaurantLogo: formData.selectedImage,
+          restaurantDesc: formData.restodescrip,
+          restaurantLogo:formData.selectedImage,
         };
-
+  
+        // Check if selectedImage is available, then include it in the updatedData
+        if (formData.selectedImage) {
+          updatedData.restaurantLogo = formData.selectedImage;
+        }
+  
         // Update the document in the 'admin_users' collection
         await setDoc(userDocRef, updatedData, { merge: true });
-
+  
         // Fetch updated user data to reflect changes in the UI
         fetchUserData();
-
+  
         // Exit edit mode
         setIsEditable(false);
+        window.alert("Profile Updated")
       } else {
         console.log('User not logged in');
       }
@@ -169,6 +175,7 @@ export const Profile = (props) => {
       console.error('Error updating user data:', error);
     }
   };
+  
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -186,14 +193,15 @@ export const Profile = (props) => {
   
       // Update formData with the selected image URL
       const downloadURL = await getDownloadURL(storageRef);
-      setFormData({
-        ...formData,
-        selectedImage: downloadURL,
-      });
+      setFormData((prev) => ({
+        ...prev,
+        selectedImage: downloadURL, // Update selectedImage here
+      }));
     } catch (error) {
       console.error('Error uploading image:', error);
     }
   };
+  
   
 
   const handleSelectImageClick = () => {
@@ -372,38 +380,6 @@ export const Profile = (props) => {
             />
             </div>
             <br />
-
-            {/* {showChangePassword && isEditable && (
-              <>
-                <label>Password</label>
-                <br />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder='Enter Password'
-                  disabled={!isEditable}
-                  value={formData.password}
-                  onChange={onInputChange}
-                  onBlur={validateInput}
-                />
-                <br />
-                {error.password && <span className='err'>{error.password}</span>}
-                <br />
-                <br />
-                <label>Confirm Password</label>
-                <br />
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  placeholder='Enter Confirm Password'
-                  disabled={!isEditable}
-                  value={formData.confirmPassword}
-                  onChange={onInputChange}
-                  onBlur={validateInput}
-                />
-                {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
-              </>
-            )} */}
 
           </div>
         </form>

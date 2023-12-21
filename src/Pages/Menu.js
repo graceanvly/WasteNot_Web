@@ -80,8 +80,6 @@ export const Menu = (props) => {
                                     </tr>
                                 );
                             })}
-
-
                         </tbody>
                     </table>
                 </div>

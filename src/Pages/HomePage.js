@@ -193,12 +193,13 @@ export const Homepage = (props) => {
                     <button className="click">See All</button>
                 </Link>
                 <div className="menu-cont">
-                    {menuItems.slice(0, 5).map((item, index) => (
-                        <div key={index} className="item">
-                            <img className="sample" src={menuItems} alt={`menuItems${index + 1}`} />
-                            <h3>{item.dishName}</h3>
-                            {/* <h4>₱{item.price}</h4> */}
-                        </div>
+                 {menuItems.slice(0, 5).map((item, index) => (
+                <div key={index} className="item">
+                    {/* Use the imageUrl to construct the image URL */}
+                    <img className="sample" src={item.imageUrl} alt={`menuItems${index + 1}`} />
+                    <h3>{item.dishName}</h3>
+                    {/* <h4>₱{item.price}</h4> */}
+                </div>
                     ))}
                 </div>
                 <br />

@@ -177,6 +177,7 @@ export const Register = (props) => {
         restaurantCity: input.restocity,
         zipCode: input.restocode,
         role: 'admin',
+        restaurantLogo: '',
       });
 
       console.log('User registered successfully:', userCredential.user.uid);
