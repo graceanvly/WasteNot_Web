@@ -23,6 +23,7 @@ export const Homepage = (props) => {
     const [staffData, setStaffData] = useState([]);
     const [adminId, setAdminId] = useState('');
     const [inventoryData, setInventoryData] = useState([]);
+    const [marketData, setMarketData] = useState([]);
 
     const auth = getAuth();
     const user = auth.currentUser;
@@ -121,6 +122,27 @@ export const Homepage = (props) => {
         fetchData();
     }, [adminId]);
 
+    useEffect(() => {
+        const fetchMarketData = async () => {
+            try {
+                const marketCollection = collection(db, 'sale_items');
+                const marketSnapshot = await getDocs(marketCollection);
+                const marketList = [];
+
+                marketSnapshot.forEach((doc) => {
+                    const marketItem = doc.data();
+                    marketList.push({ id: doc.id, ...marketItem });
+                });
+
+                setMarketData(marketList);
+            } catch (error) {
+                console.error('Error fetching market data: ', error);
+            }
+        };
+
+        fetchMarketData();
+    }, [user]);
+
     return (
         <>
             <Navbar2 />
@@ -153,7 +175,7 @@ export const Homepage = (props) => {
                         <div className="title-market"><h4>Market</h4></div>
                         <br />
                         <FaWarehouse />
-                        <p>200</p>
+                        {marketData.length}
                     </button>
                     </Link>
 
@@ -193,13 +215,13 @@ export const Homepage = (props) => {
                     <button className="click">See All</button>
                 </Link>
                 <div className="menu-cont">
-                 {menuItems.slice(0, 5).map((item, index) => (
-                <div key={index} className="item">
-                    {/* Use the imageUrl to construct the image URL */}
-                    <img className="sample" src={item.imageUrl} alt={`menuItems${index + 1}`} />
-                    <h3>{item.dishName}</h3>
-                    {/* <h4>₱{item.price}</h4> */}
-                </div>
+                    {menuItems.slice(0, 5).map((item, index) => (
+                        <div key={index} className="item">
+                            {/* Use the imageUrl to construct the image URL */}
+                            <img className="sample" src={item.imageUrl} alt={`menuItems${index + 1}`} />
+                            <h3>{item.dishName}</h3>
+                            {/* <h4>₱{item.price}</h4> */}
+                        </div>
                     ))}
                 </div>
                 <br />
@@ -222,13 +244,16 @@ export const Homepage = (props) => {
                 <h1>Market</h1>
                 <Link to="/market"><button class='click'>See All</button></Link>
                 <div class='market-cont'>
-                    <div class="item"><img class='sample' src={ingredient} alt="item1" /><h3>Item 1</h3><h4>₱2,500</h4><h5>Available: 10Kg</h5></div>
-                    <div class="item"><img class='sample' src={ingredient} alt="item1" /><h3>Item 2</h3><h4>₱2,500</h4><h5>Available: 10Kg</h5></div>
-                    <div class="item"><img class='sample' src={ingredient} alt="item1" /><h3>Item 3</h3><h4>₱2,500</h4><h5>Available: 10Kg</h5></div>
-                    <div class="item"><img class='sample' src={ingredient} alt="item1" /><h3>Item 4</h3><h4>₱2,500</h4><h5>Available: 10Kg</h5></div>
-                    <div class="item"><img class='sample' src={ingredient} alt="item1" /><h3>Item 5</h3><h4>₱2,500</h4><h5>Available: 10Kg</h5></div>
+                    {marketData.map((item, index) => (
+                        <div key={index} className="item">
+                            {/* Use the item's imageUrl to construct the image URL */}
+                            <img className='sample' src={item.imageUrl} alt={`item${index + 1}`} />
+                            <h3>{item.Item_name}</h3>
+                            <h4>₱{item.Price}</h4>
+                            <h5>Available: {item.Quantity}Kg</h5>
+                        </div>
+                    ))}
                 </div>
-                <br />
 
                 <h1>Ingredients</h1>
                 <Link to="/inventory"><button class='click'>See All</button></Link>
