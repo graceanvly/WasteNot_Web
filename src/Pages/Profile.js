@@ -3,9 +3,7 @@ import './Design/profiledesign.css';
 // import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Navbar2 from '../components/NavBar2';
-import {
-  FaPlusCircle
-} from 'react-icons/fa';
+import { FaPlusCircle } from 'react-icons/fa';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -151,7 +149,7 @@ export const Profile = (props) => {
           restaurantCity: formData.restocity,
           zipCode: formData.restocode,
           restaurantDesc: formData.restodescrip,
-          restaurantLogo:formData.selectedImage,
+          restaurantLogo: formData.selectedImage,
         };
   
         // Check if selectedImage is available, then include it in the updatedData
@@ -179,19 +177,12 @@ export const Profile = (props) => {
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-  
-    // Generate a unique name for the file
     const fileName = `Admin_Profile/${auth.currentUser.uid}_${file.name}`;
-  
-    // Get a reference to the storage location
     const storage = getStorage();
     const storageRef = ref(storage, fileName);
-  
-    // Upload the file to Firebase Storage
+
     try {
       await uploadBytes(storageRef, file);
-  
-      // Update formData with the selected image URL
       const downloadURL = await getDownloadURL(storageRef);
       setFormData((prev) => ({
         ...prev,
@@ -201,11 +192,8 @@ export const Profile = (props) => {
       console.error('Error uploading image:', error);
     }
   };
-  
-  
 
   const handleSelectImageClick = () => {
-    // Trigger the file input when the "Select Image" button is clicked
     document.getElementById('profileImage').click();
   };
 
@@ -213,32 +201,31 @@ export const Profile = (props) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const validateInput = e => {
+  const validateInput = (e) => {
     let { name, value } = e.target;
-    setError(prev => {
-      const stateObj = { ...prev, [name]: "" };
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: '' };
 
       switch (name) {
-        case "password":
+        case 'password':
           if (!value) {
-            stateObj[name] = "Please enter new Password.";
-
+            stateObj[name] = 'Please enter new Password.';
           } else if (formData.confirmPassword && value !== formData.confirmPassword) {
-            stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
+            stateObj['confirmPassword'] = 'Password and Confirm Password does not match.';
           } else {
-            stateObj["confirmPassword"] = formData.confirmPassword ? "" : error.confirmPassword;
+            stateObj['confirmPassword'] = formData.confirmPassword ? '' : error.confirmPassword;
           }
           break;
 
-        case "confirmPassword":
+        case 'confirmPassword':
           if (!value) {
-            stateObj[name] = "Please enter Confirm new Password.";
+            stateObj[name] = 'Please enter Confirm new Password.';
           } else if (formData.password && value !== formData.password) {
-            stateObj[name] = "Password and Confirm Password does not match.";
+            stateObj[name] = 'Password and Confirm Password does not match.';
           }
           break;
 

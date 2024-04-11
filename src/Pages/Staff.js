@@ -10,7 +10,6 @@ import { db } from '../config/firebase';
 import { getAuth, onAuthStateChanged, deleteUser } from 'firebase/auth';
 import { deleteDoc, doc } from 'firebase/firestore';
 
-
 export const Staff = (props) => {
   const [staffData, setStaffData] = useState([]);
   const [adminId, setAdminId] = useState('');
@@ -24,6 +23,7 @@ export const Staff = (props) => {
         // Access the UID of the currently authenticated admin user
         const adminId = user.uid;
         setAdminId(adminId); // Set adminId in state for later use
+        fetchStaffData(adminId); // Fetch the initial staff data
       } else {
         console.log('No user is signed in.');
       }
@@ -32,32 +32,23 @@ export const Staff = (props) => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!adminId) {
-        // Admin is not authenticated, do not fetch data
-        return;
-      }
+  const fetchStaffData = async (adminId) => {
+    try {
+      // Fetch staff data only for the authenticated admin
+      const staffCollection = collection(db, 'users');
+      const q = query(staffCollection, where('adminId', '==', adminId));
+      const staffSnapshot = await getDocs(q);
 
-      try {
-        // Fetch staff data only for the authenticated admin
-        const staffCollection = collection(db, 'users');
-        const q = query(staffCollection, where('adminId', '==', adminId));
-        const staffSnapshot = await getDocs(q);
+      const staffData = staffSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-        const staffData = staffSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-        setStaffData(staffData);
-      } catch (error) {
-        console.error('Error fetching staff data: ', error.message);
-      }
-    };
-
-    fetchData();
-  }, [adminId]);
+      setStaffData(staffData);
+    } catch (error) {
+      console.error('Error fetching staff data: ', error.message);
+    }
+  };
 
   const handleDelete = async (staffId, userId) => {
     const confirmation = window.confirm('Confirm delete?');
@@ -91,14 +82,13 @@ export const Staff = (props) => {
     }
   };
 
-
   return (
     <>
       <Navbar2 />
       <Sidebar />
       <div className="staff-container">
-        <div class="staff-title">Staff</div>
-        <div class="total-staff">
+        <div className="staff-title">Staff</div>
+        <div className="total-staff">
           <h2>Total Staff</h2>
           <br />
           <FaWarehouse />
@@ -106,7 +96,7 @@ export const Staff = (props) => {
         </div>
         <div>
           <Link to="/addstaff">
-            <button class="bttn-addstaff">
+            <button className="bttn-addstaff">
               <FaPlusCircle />
             </button>
           </Link>
@@ -117,8 +107,7 @@ export const Staff = (props) => {
             <FaSearch />
           </button>
         </div>
-        <div class="staff-scrollable">
-
+        <div className="staff-scrollable">
           <table>
             <thead>
               <tr>
@@ -129,11 +118,11 @@ export const Staff = (props) => {
             <tbody>
               {staffData.map((staffMember) => (
                 <tr key={staffMember.id}>
-                  <td class="profile">
-                    <img class="staff-img" src={staff} alt="ingredient" />
+                  <td className="profile">
+                    <img className="staff-img" src={staff} alt="ingredient" />
                   </td>
                   <td>
-                    <form class="staff-info">
+                    <form className="staff-info">
                       <label htmlFor="idNumber">ID Number:</label>
                       <input
                         type="text"

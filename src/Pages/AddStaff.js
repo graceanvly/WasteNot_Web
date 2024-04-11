@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar2 from '../components/NavBar2';
 import { Link } from "react-router-dom";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -39,9 +39,10 @@ export const AddStaff = () => {
         confirmPassword: ''
     });
     const [adminId, setAdminId] = useState('');
+    const [staffList, setStaffList] = useState([]);
     const genders = ['Male', 'Female'];
     const positions = ['Head Staff', 'Staff', 'Manager'];
-     const auth = getAuth();
+    const auth = getAuth();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -50,6 +51,7 @@ export const AddStaff = () => {
                 // Access the UID of the currently authenticated admin user
                 const adminId = user.uid;
                 setAdminId(adminId); // Set adminId in state for later use
+                fetchStaffList(adminId); // Fetch the initial staff list
             } else {
                 console.log("No user is signed in.");
             }
@@ -120,50 +122,68 @@ export const AddStaff = () => {
 
     const handleSubmit = async () => {
         try {
-            if (!validateForm()) {
-                window.alert('Please fill in all the required fields.');
-                return;
-            }
-            
-    
-            const auth = getAuth();
-            const { email, password } = formData;
-            
-            // Create the user in Firebase Authentication
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-    
-            // Access the user ID from the userCredential
-            const userId = user.uid;
-    
-            // Save additional user data in Firestore
-            const usersCollection = collection(db, 'users');
-            await addDoc(usersCollection, {
-                idNumber: formData.idNumber,
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                gender: formData.gender,
-                strAddress: formData.strAddress,
-                cityAddress: formData.cityAddress,
-                zipCode: formData.zipCode,
-                email: formData.email,
-                position: formData.position,
-                adminId: adminId,
-                role: 'staff',
-                userId: userId, // Save the UID of the user in Firestore
-            });
-    
-            window.alert('Staff Added Successfully');
-            console.log('Staff data saved to Firestore');
-    
-            // Do not log in the user in the web app
-    
-            history('/staff');
+          if (!validateForm()) {
+            window.alert('Please fill in all the required fields.');
+            return;
+          }
+      
+          const auth = getAuth();
+          const { email, password } = formData;
+      
+          // Create the user in Firebase Authentication
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+      
+          // Access the user ID from the userCredential
+          const userId = user.uid;
+      
+          // Save additional user data in Firestore
+          const usersCollection = collection(db, 'users');
+          await addDoc(usersCollection, {
+            idNumber: formData.idNumber,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            gender: formData.gender,
+            strAddress: formData.strAddress,
+            cityAddress: formData.cityAddress,
+            zipCode: formData.zipCode,
+            email: formData.email,
+            position: formData.position,
+            adminId: adminId,
+            role: 'staff',
+            userId: userId, // Save the UID of the user in Firestore
+          });
+      
+          // Fetch the updated list of staff members
+          const updatedStaffList = await fetchStaffList(adminId);
+      
+          // Update the application state with the new staff list
+          updateStaffList(updatedStaffList);
+      
+          window.alert('Staff Added Successfully');
+          console.log('Staff data saved to Firestore');
+      
+          // Do not log in the user in the web app
+          history('/staff');
         } catch (error) {
-            console.error("Error adding user: ", error.message);
+          console.error("Error adding user: ", error.message);
         }
-    };
-    
+      };
+      
+      // Helper function to fetch the staff list from Firestore
+      async function fetchStaffList(adminId) {
+        const usersCollection = collection(db, 'users');
+        const staffQuery = query(usersCollection, where('adminId', '==', adminId), where('role', '==', 'staff'));
+        const staffSnapshot = await getDocs(staffQuery);
+        const staffList = staffSnapshot.docs.map((doc) => doc.data());
+        setStaffList(staffList);
+        return staffList;
+    }
+      
+      // Helper function to update the staff list in the application state
+      function updateStaffList(newStaffList) {
+        setStaffList(newStaffList);
+    }
     return (
         <>
             <Navbar2 />
